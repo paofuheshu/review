@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="bean3" class="com.paofuheshu.spring.bean.domain.di.Bean3"/>
+
+    <!-- 通过构造器方式注入容器中的bean  -->
+    <bean id="diBeanByConstructor" class="com.paofuheshu.spring.bean.domain.di.UserModel">
+        <!-- 通过ref引用容器中定义的其他bean，bean1对应上面定义的id="bean1"的bean -->
+        <constructor-arg index="0" ref="bean3"></constructor-arg>
+        <constructor-arg index="1">
+            <bean class="com.paofuheshu.spring.bean.domain.di.Bean4">
+                <constructor-arg index="0" value="我是bean3"></constructor-arg>
+            </bean>
+        </constructor-arg>
+    </bean>
+
+    <!-- 通过setter方式注入容器中的bean -->
+    <bean id="diBeanBySetter" class="com.paofuheshu.spring.bean.domain.di.UserModel">
+        <property name="bean3" ref="bean3"/>
+        <property name="bean4">
+            <bean class="com.paofuheshu.spring.bean.domain.di.Bean4">
+                <!--根据构造方法注入-->
+<!--                <constructor-arg name="name" value="我是bean4"></constructor-arg>-->
+                <!--根据setter方法注入-->
+                <property name="name" value="我是bean4"></property>
+            </bean>
+        </property>
+    </bean>
+</beans>

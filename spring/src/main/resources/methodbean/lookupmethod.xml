@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="serviceA" class="com.paofuheshu.spring.bean.domain.methodbean.lookup.ServiceA" scope="prototype"/>
+
+<!--    当我们调用 serviceB 中的 getServiceA 方法的时候，这个方法会拦截，然后会按照lookup-method元
+素中bean属性的值作为bean的名称去容器中查找对应bean，然后作为getServiceA的返回值返回，即调
+用getServiceA方法的时候，会从spring容器中查找 id为serviceA 的bean然后返回-->
+    <bean id="serviceB" class="com.paofuheshu.spring.bean.domain.methodbean.lookup.ServiceB">
+        <lookup-method name="getServiceA" bean="serviceA"/>
+    </bean>
+</beans>

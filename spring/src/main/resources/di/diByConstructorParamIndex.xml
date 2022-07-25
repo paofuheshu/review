@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="diByConstructorParamIndex" class="com.paofuheshu.spring.bean.domain.di.UserModel">
+        <constructor-arg index="0" value="泡芙和树"></constructor-arg>
+        <constructor-arg index="1" value="根据构造器参数索引注入的"></constructor-arg>
+    </bean>
+</beans>

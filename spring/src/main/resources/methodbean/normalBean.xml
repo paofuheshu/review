@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!--    serviceA的scope是prototype，表示serviceA是多例的，每次从容器中获取serviceA都会返回一个新的对象。-->
+    <bean id="serviceA" class="com.paofuheshu.spring.bean.domain.methodbean.normal.ServiceA" scope="prototype"/>
+
+<!--    而serviceB的scope没有配置，默认是单例的，通过property元素将serviceA注入。-->
+    <bean id="serviceB" class="com.paofuheshu.spring.bean.domain.methodbean.normal.ServiceB">
+        <property name="serviceA" ref="serviceA"/>
+    </bean>
+</beans>

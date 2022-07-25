@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="serviceA" class="com.paofuheshu.spring.bean.domain.abstractbean.ServiceA"/>
+<!--    此处多了一个baseService的bean，这个bean没有指定class对象，但是多了一个abstract="true"的
+属性，表示这个bean是抽象的，abstract为true的bean在spring容器中不会被创建，只是会将其当做
+bean定义的模板，而serviceB和serviceC的定义中多了一个属性parent，用来指定当前bean的父
+bean名称，此处是baseService，此时serviceB和serviceC会继承baseService中定义的配置信息。
+-->
+    <bean id="baseService" abstract="true">
+        <property name="name" value="泡芙和树"/>
+        <property name="serviceA" ref="serviceA"/>
+    </bean>
+    <bean id="serviceB" class="com.paofuheshu.spring.bean.domain.abstractbean.ServiceB" parent="baseService"/>
+<!--子bean中也可以重新定义父bean中已经定义好的配置，这样子配置会覆盖父bean中的配置信息-->
+    <bean id="serviceC" class="com.paofuheshu.spring.bean.domain.abstractbean.ServiceC" parent="baseService">
+        <property name="name" value="酒精泡芙"></property>
+    </bean>
+</beans>

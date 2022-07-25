@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="serviceA" class="com.paofuheshu.spring.bean.domain.abstractbean.ServiceA"/>
+
+    <bean id="serviceB" class="com.paofuheshu.spring.bean.domain.abstractbean.ServiceB">
+        <property name="name" value="serviceB"/>
+        <property name="serviceA" ref="serviceA"/>
+    </bean>
+
+    <bean id="serviceC" class="com.paofuheshu.spring.bean.domain.abstractbean.ServiceC">
+        <property name="name" value="serviceC"/>
+        <property name="serviceA" ref="serviceA"/>
+    </bean>
+</beans>

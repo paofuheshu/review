@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="car" class="com.paofuheshu.spring.bean.domain.beanLife.test1.Car">
+        <property name="name" value="宝马"/>
+    </bean>
+
+    <bean id="car1" class="com.paofuheshu.spring.bean.domain.beanLife.test1.Car">
+        <property name="name" value="奥迪"/>
+    </bean>
+
+    <bean id="car2" parent="car1"/>
+
+    <bean id="user" class="com.paofuheshu.spring.bean.domain.beanLife.test1.User">
+        <property name="name" value="泡芙和树"/>
+        <property name="car" ref="car1"/>
+    </bean>
+</beans>

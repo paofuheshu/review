@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean class="com.paofuheshu.spring.bean.domain.di.DiAutowireByType$Service1">
+        <property name="desc" value="service1"></property>
+    </bean>
+
+    <bean class="com.paofuheshu.spring.bean.domain.di.DiAutowireByType$Service2">
+        <property name="desc" value="service2"></property>
+    </bean>
+
+    <!-- autowire：byType 配置按照set参数类型进行自动注入 -->
+    <bean id="diAutowireByType1" class="com.paofuheshu.spring.bean.domain.di.DiAutowireByType" autowire="byType"/>
+</beans>

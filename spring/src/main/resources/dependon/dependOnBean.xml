@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!--    在xml中先定义的bean3，然后定义了bean2和bean1，并且指定了bean3的depend-on=“bean2,bean1”，根据depend-on的规则，
+        所以会先创建bean2和bean1,然后再创建bean3，销毁的时候，会按照和创建相反的顺序来，
+        即：bean1、bean2、bean3-->
+    <bean id="bean3" class="com.paofuheshu.spring.bean.domain.dependon.DependOnBean$Bean3" depends-on="bean2, bean1"/>
+
+    <bean id="bean2" class="com.paofuheshu.spring.bean.domain.dependon.DependOnBean$Bean2"></bean>
+    <bean id="bean1" class="com.paofuheshu.spring.bean.domain.dependon.DependOnBean$Bean1"></bean>
+</beans>

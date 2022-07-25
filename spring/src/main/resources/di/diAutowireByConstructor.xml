@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean class="com.paofuheshu.spring.bean.domain.di.DiAutowireByConstructor$Service1">
+        <property name="desc" value="service1"></property>
+    </bean>
+
+    <bean class="com.paofuheshu.spring.bean.domain.di.DiAutowireByConstructor$Service2">
+        <property name="desc" value="service2"></property>
+    </bean>
+<!--   构造函数匹配采用贪婪匹配，多个构造函数结合容器找到一个合适的构造函数，最匹配的就是第一
+个有参构造函数，而第二个有参构造函数的第二个参数在spring容器中找不到匹配的bean对象，
+所以被跳过了。 -->
+<!--  上方定义了两个bean service1和service2 根据构造方法自动注入  此时会将service1和service2都注入到bean diAutowireByConstructor中
+  如果只定义了一个bean1  则只会将service1注入  如果按照已经定义的bean找不到对应的构造方法 则不会注入
+  如：在xml文件中只定义了service1的bean  但diAutowireByConstructor这个bean中只有service2的单独构造方法，
+  没有service1的单独构造方法 则此时service1的bean不会被注入-->
+    <bean id="diAutowireByConstructor" class="com.paofuheshu.spring.bean.domain.di.DiAutowireByConstructor" autowire="constructor"/>
+</beans>
